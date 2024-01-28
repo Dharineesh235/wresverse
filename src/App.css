@@ -1,0 +1,140 @@
+#root {
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  text-align: center;
+  /* background-color: rgb(75, 74, 74); */
+}
+
+.login {
+  width: 100%;
+  color: rgb(8, 8, 8) ;
+  padding: 150px 0px;
+  align-items: 'center';
+  padding: '20px';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+.login-admin {
+  width: 100%;
+  color: rgb(252, 6, 6) ;
+  padding: 150px 0px;
+  align-items: 'center';
+  padding: '20px';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+.submit-btn{
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+.submit-btn::after{
+  content: "";
+  background: #d48f8f;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 300%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+.submit-btn:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+.forgot-pass-login:hover{
+  color: maroon;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login-input::placeholder{
+  color: white;
+  font-weight: 300;
+}
+.login-admin::-ms-reveal {
+  filter: invert(100%);
+}
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+.red-placeholder::placeholder{
+  color: rgb(138, 3, 3);
+}
+.passkey-alert{
+  animation: shake 0.9s linear;
+  /* animation-name: shake;
+  animation-duration: 0.4s;
+  animation-iteration-count: 3; */
+}
+@keyframes shake {
+  0%{
+    left: 45%;
+  }
+  20%{
+    left: 43%;
+  }
+  40%{
+    left: 47%;
+  }
+  60%{
+    left: 43%;
+  }
+  80%{
+    left: 47%;
+  }
+ 
+  100%{
+    left: 45%;
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+/* .logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
