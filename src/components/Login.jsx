@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Admin from "./Admin";
+import Nav from "./Nav";
 
 const Login = ({ credential }) => {
   const PASSKEY = import.meta.env.VITE_PASSKEY || "admin";
@@ -38,7 +39,7 @@ const Login = ({ credential }) => {
       marginTop: "150px",
       maxWidth: "500px",
       margin: "0 auto",
-      // border: "10px solid red",
+      border: "10px solid red",
       borderRadius: "20px",
       boxSizing: "border-box",
       minWidth: "550px",
@@ -116,6 +117,7 @@ const Login = ({ credential }) => {
     >
       {credential !== "admin" ? (
         <>
+          <Nav credential={credential}/>
           <div
             className="login-container"
             style={
@@ -216,7 +218,9 @@ const Login = ({ credential }) => {
           {adminLogin !== true ? (
             <Admin funk={setAdminLogin} />
           ) : (
-            <div
+           <>
+            <Nav credential={credential}/>
+             <div
               className="login-container"
               style={
                 credential !== "admin"
@@ -318,6 +322,7 @@ const Login = ({ credential }) => {
                 )}
               </div>
             </div>
+           </>
           )}
         </>
       )}

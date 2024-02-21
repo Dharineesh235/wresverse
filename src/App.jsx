@@ -5,14 +5,18 @@ import "./App.css";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
 
 function App() {
-
   return (
-    <>
-      <Nav />
-      <Login credential="admin"/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/adminlogin" element={<Login credential="admin" />} />
+        <Route path="/login" element={<Login credential="user" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
