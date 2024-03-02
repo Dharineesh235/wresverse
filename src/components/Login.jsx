@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Admin from "./Admin";
 import Nav from "./Nav";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 
 const Login = ({ credential }) => {
   const PASSKEY = import.meta.env.VITE_PASSKEY || "admin";
@@ -95,7 +95,7 @@ const Login = ({ credential }) => {
               />
             </div>
           </div>
-          
+
           {/* login password container  */}
           <div className="container-input">
             <div>
@@ -121,7 +121,7 @@ const Login = ({ credential }) => {
                   fontSize: "1.5em",
                 }}
                 type="password"
-                className='login-input login-admin'
+                className="login-input login-admin"
                 placeholder="Enter passowrd..."
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleSwitchFieldPassword}
@@ -139,37 +139,40 @@ const Login = ({ credential }) => {
               margin: "0 auto",
             }}
           >
-            {credential!=="admin" ? <p
+            {credential !== "admin" ? (
+              <p
+                className="forgot-pass-login"
+                style={{
+                  paddingTop: "20px",
+                  cursor: "pointer",
+                  fontSize: "1.1em",
+                  fontWeight: "700",
+                }}
+                onClick={() => navigate("/adminlogin")}
+              >
+                <Link to={'/adminlogin'} style={{textDecoration:'none', color:'inherit'}}>Admin?</Link>
+              </p>
+            ) : (
+              <p
+                className="forgot-pass-login"
+                style={{
+                  paddingTop: "20px",
+                  cursor: "pointer",
+                  fontSize: "1.1em",
+                  fontWeight: "700",
+                }}
+                // onClick={()=>navigate('/login')}
+              >
+                <Link to={'/login'} style={{textDecoration:'none', color:'inherit'}}>User?</Link>
+              </p>
+            )}
+            <p
               className="forgot-pass-login"
               style={{
                 paddingTop: "20px",
                 cursor: "pointer",
                 fontSize: "1.1em",
-                fontWeight:"700"
-              }}
-              onClick={()=>navigate('/adminlogin')}
-            >
-              Admin?
-            </p> :
-            <p
-            className="forgot-pass-login"
-            style={{
-              paddingTop: "20px",
-              cursor: "pointer",
-              fontSize: "1.1em",
-              fontWeight:"700"
-            }}
-            onClick={()=>navigate('/login')}
-          >
-            User?
-          </p>}
-            <p
-              className="forgot-pass-login"
-              style={{
-                paddingTop: "20px",
-                cursor: "pointer",
-                fontSize: "1.1em",
-                fontWeight:"700"
+                fontWeight: "700",
               }}
             >
               Forgot password ?
@@ -178,13 +181,9 @@ const Login = ({ credential }) => {
 
           <div className="mt-5 mb-5 ">
             {credential !== "admin" ? (
-              <button className="submit-btn submit-btn-user" >
-                Submit
-              </button>
+              <button className="submit-btn submit-btn-user">Submit</button>
             ) : (
-              <button className="submit-btn submit-btn-admin">
-                Submit
-              </button>
+              <button className="submit-btn submit-btn-admin">Submit</button>
             )}
           </div>
         </div>

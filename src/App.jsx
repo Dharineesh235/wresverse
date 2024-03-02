@@ -5,13 +5,13 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/adminlogin" element={<Login credential="admin" />} />
         <Route path="/login" element={<Login credential="user" />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
