@@ -1,0 +1,5 @@
+- destination: /
+  spa:
+    app: wresverse
+    fallbacks:
+      - url: /index.html

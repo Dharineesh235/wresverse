@@ -10,6 +10,7 @@ const Login = ({ credential }) => {
   const [adminLogin, setAdminLogin] = useState(false);
 
   const navigate = useNavigate();
+  useH
 
   useEffect(() => {
     console.log(adminLogin);
@@ -163,7 +164,8 @@ const Login = ({ credential }) => {
                 }}
                 // onClick={()=>navigate('/login')}
               >
-                <Link to={'/login'} style={{textDecoration:'none', color:'inherit'}}>User?</Link>
+                {/* <Link to={'/login'} style={{textDecoration:'none', color:'inherit'}}>User?</Link> */}
+                User?
               </p>
             )}
             <p
