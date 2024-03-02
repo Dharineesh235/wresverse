@@ -10,7 +10,6 @@ const Login = ({ credential }) => {
   const [adminLogin, setAdminLogin] = useState(false);
 
   const navigate = useNavigate();
-  useH
 
   useEffect(() => {
     console.log(adminLogin);
