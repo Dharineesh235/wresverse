@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Admin from "./Admin";
 import Nav from "./Nav";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const Login = ({ credential }) => {
   const PASSKEY = import.meta.env.VITE_PASSKEY || "admin";
@@ -8,83 +9,11 @@ const Login = ({ credential }) => {
   const [passowrd, setPassword] = useState("");
   const [adminLogin, setAdminLogin] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     console.log(adminLogin);
   }, [adminLogin]);
-
-  const style = {
-    containerPrimeUser: {
-      minWidth: "600px",
-      backgroundColor: "grey",
-      height: "100vh",
-    },
-    containerPrimeAdmin: {
-      minWidth: "600px",
-      backgroundColor: "black",
-      height: "100vh",
-    },
-    containerSec: {
-      position: "relative",
-      marginTop: "150px",
-      width: "500px",
-      maxWidth: "500px",
-      margin: "0 auto",
-      border: "10px solid black",
-      borderRadius: "20px",
-      boxSizing: "border-box",
-      minWidth: "500px",
-    },
-    containerSecAdmin: {
-      position: "relative",
-      marginTop: "150px",
-      maxWidth: "500px",
-      margin: "0 auto",
-      border: "10px solid red",
-      borderRadius: "20px",
-      boxSizing: "border-box",
-      minWidth: "550px",
-    },
-    gap: { gap: "20px" },
-    input: {
-      backgroundColor: "transparent",
-      border: "none",
-      borderBottom: "3px solid rgb(132, 22, 2)",
-      padding: "5px",
-      // color: "rgb(8, 8, 8)",
-      color: "white",
-      fontWeight: "500",
-      outline: "none",
-      fontSize: "1.5em",
-    },
-    submitBtn: {
-      position: "relative",
-      backgroundColor: "black",
-      border: "none",
-      fontSize: "1.2em",
-      color: "#FFFFFF",
-      padding: "12px",
-      width: "80%",
-      textAlign: "center",
-      transitionDuration: "0.4s",
-      overflow: "hidden",
-      cursor: "pointer",
-      borderRadius: "26px",
-    },
-    submitBtnadmin: {
-      position: "relative",
-      backgroundColor: "red",
-      border: "none",
-      fontSize: "1.2em",
-      color: "#FFFFFF",
-      padding: "12px",
-      width: "80%",
-      textAlign: "center",
-      transitionDuration: "0.4s",
-      overflow: "hidden",
-      cursor: "pointer",
-      borderRadius: "26px",
-    },
-  };
 
   const handleSwitchFieldInput = (e) => {
     const key = e.key;
@@ -107,226 +36,160 @@ const Login = ({ credential }) => {
   };
 
   return (
-    <div
-      className={credential !== "admin" ? "login" : "login-admin"}
-      style={
-        credential === "admin"
-          ? style.containerPrimeAdmin
-          : style.containerPrimeUser
-      }
-    >
-      {credential !== "admin" ? (
-        <>
-          <Nav credential={credential}/>
-          <div
-            className="login-container"
-            style={
-              credential !== "admin"
-                ? style.containerSec
-                : style.containerSecAdmin
-            }
-          >
-            <div className="mt-5">
-              <h1>Login</h1>
-            </div>
+    <>
+      <Nav credential={credential} />
+      <div
+        className={
+          credential !== "admin"
+            ? "containerPrime containerPrimeUser"
+            : "containerPrime containerPrimeAdmin"
+        }
+        // style={
+        //   credential === "admin"
+        //     ? style.containerPrimeAdmin
+        //     : style.containerPrimeUser
+        // }
+      >
+        <div
+          className="containerSec"
+          // style={
+          //   credential !== "admin"
+          //     ? style.containerSec
+          //     : style.containerSecAdmin
+          // }
+        >
+          <div className="mt-5">
+            <h1>Login</h1>
+          </div>
 
-            <div
-              className="mt-5 d-flex justify-content-center"
-              style={style.gap}
-            >
-              <div>
-                <i
-                  className={
-                    credential === "admin"
-                      ? "bi fs-3 bi-person-fill Dg text-light"
-                      : "bi fs-3 bi-person-fill Dg"
-                  }
-                ></i>
-              </div>
-              <div>
-                <input
-                  id="userIdLogin"
-                  style={style.input}
-                  type="text"
-                  className="login-input"
-                  placeholder="Enter user id..."
-                  onChange={(e) => setUserId(e.target.value)}
-                  onKeyDown={handleSwitchFieldInput}
-                  autoFocus
-                />
-              </div>
-            </div>
-
-            <div
-              className="mt-5 d-flex justify-content-center"
-              style={style.gap}
-            >
-              <div>
-                <i
-                  className={
-                    credential === "admin"
-                      ? "bi fs-3 bi-lock-fill text-light"
-                      : "bi fs-3 bi-lock-fill"
-                  }
-                ></i>
-              </div>
-              <div style={{ position: "relative" }}>
-                <input
-                  id="passwordLogin"
-                  style={style.input}
-                  type="password"
-                  className={
-                    credential === "admin"
-                      ? "login-input login-admin"
-                      : "login-input"
-                  }
-                  placeholder="Enter passowrd..."
-                  onChange={(e) => setPassword(e.target.value)}
-                  onKeyDown={handleSwitchFieldPassword}
-                />
-              </div>
+          {/* user id input container */}
+          <div className="container-input">
+            <div>
+              <i
+                className={
+                  credential === "admin"
+                    ? "bi  bi-person-fill Dg text-light icon"
+                    : "bi  bi-person-fill Dg icon"
+                }
+              ></i>
             </div>
             <div>
-              <p
-                className="forgot-pass-login"
+              <input
+                id="userIdLogin"
                 style={{
-                  paddingTop: "20px",
-                  cursor: "pointer",
-                  fontSize: "1.1em",
-                  marginLeft: "250px",
+                  backgroundColor: "transparent",
+                  border: "none",
+                  borderBottom: "3px solid rgb(132, 22, 2)",
+                  padding: "5px",
+                  color: "white",
+                  fontWeight: "500",
+                  outline: "none",
+                  fontSize: "1.5em",
                 }}
-              >
-                Forgot password ?
-              </p>
-            </div>
-
-            <div className="mt-5 mb-5">
-              {credential !== "admin" ? (
-                <button className="submit-btn" style={style.submitBtn}>
-                  Submit
-                </button>
-              ) : (
-                <button className="submit-btn" style={style.submitBtnadmin}>
-                  Submit
-                </button>
-              )}
+                type="text"
+                className="login-input"
+                placeholder="Enter user id..."
+                onChange={(e) => setUserId(e.target.value)}
+                onKeyDown={handleSwitchFieldInput}
+                autoFocus
+              />
             </div>
           </div>
-        </>
-      ) : (
-        <>
-          {adminLogin !== true ? (
-            <Admin funk={setAdminLogin} />
-          ) : (
-           <>
-            <Nav credential={credential}/>
-             <div
-              className="login-container"
-              style={
-                credential !== "admin"
-                  ? style.containerSec
-                  : style.containerSecAdmin
-              }
-            >
-              <div className="mt-5">
-                <h1>Login</h1>
-              </div>
-
-              <div
-                className="mt-5 d-flex justify-content-center"
-                style={style.gap}
-              >
-                <div>
-                  <i
-                    className={
-                      credential === "admin"
-                        ? "bi fs-3 bi-person-fill Dg text-light"
-                        : "bi fs-3 bi-person-fill Dg"
-                    }
-                  ></i>
-                </div>
-                <div>
-                  <input
-                    id="userIdLogin"
-                    style={style.input}
-                    type="text"
-                    className="login-input"
-                    placeholder="Enter user id..."
-                    onChange={(e) => setUserId(e.target.value)}
-                    onKeyDown={handleSwitchFieldInput}
-                    autoFocus
-                  />
-                </div>
-              </div>
-
-              <div
-                className="mt-5 d-flex justify-content-center"
-                style={style.gap}
-              >
-                <div>
-                  <i
-                    className={
-                      credential === "admin"
-                        ? "bi fs-3 bi-lock-fill text-light"
-                        : "bi fs-3 bi-lock-fill"
-                    }
-                  ></i>
-                </div>
-                <div style={{ position: "relative" }}>
-                  <input
-                    id="passwordLogin"
-                    style={style.input}
-                    type="password"
-                    className={
-                      credential === "admin"
-                        ? "login-input login-admin"
-                        : "login-input"
-                    }
-                    placeholder="Enter passowrd..."
-                    onChange={(e) => setPassword(e.target.value)}
-                    onKeyDown={handleSwitchFieldPassword}
-                  />
-                </div>
-              </div>
-              <div style={{display:'flex', gap:'200px', marginLeft:'50px'}}>
-                <p style={{
-                    paddingTop: "20px",
-                    cursor: "pointer",
-                    fontSize: "1.2em",
-                    color:'skyblue'
-                  }}>user ?</p>
-                <p
-                  className="forgot-pass-login"
-                  style={{
-                    paddingTop: "20px",
-                    cursor: "pointer",
-                    fontSize: "1.2em",
-                    color:'skyblue'
-                  
-                  }}
-                >
-                  Forgot password ?
-                </p>
-              </div>
-              <div>Didn't have an account ?</div>
-
-              <div className="mt-5 mb-5">
-                {credential !== "admin" ? (
-                  <button className="submit-btn" style={style.submitBtn}>
-                    Submit
-                  </button>
-                ) : (
-                  <button className="submit-btn" style={style.submitBtnadmin}>
-                    Submit
-                  </button>
-                )}
-              </div>
+          
+          {/* login password container  */}
+          <div className="container-input">
+            <div>
+              <i
+                className={
+                  credential === "admin"
+                    ? "bi bi-lock-fill text-light icon"
+                    : "bi bi-lock-fill icon"
+                }
+              ></i>
             </div>
-           </>
-          )}
-        </>
-      )}
-    </div>
+            <div style={{ position: "relative" }}>
+              <input
+                id="passwordLogin"
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  borderBottom: "3px solid rgb(132, 22, 2)",
+                  padding: "5px",
+                  color: "white",
+                  fontWeight: "500",
+                  outline: "none",
+                  fontSize: "1.5em",
+                }}
+                type="password"
+                className='login-input login-admin'
+                placeholder="Enter passowrd..."
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleSwitchFieldPassword}
+              />
+            </div>
+          </div>
+
+          {/* user Options */}
+          <div
+            className="container-user-opts"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "300px",
+              margin: "0 auto",
+            }}
+          >
+            {credential!=="admin" ? <p
+              className="forgot-pass-login"
+              style={{
+                paddingTop: "20px",
+                cursor: "pointer",
+                fontSize: "1.1em",
+                fontWeight:"700"
+              }}
+              onClick={()=>navigate('/adminlogin')}
+            >
+              Admin?
+            </p> :
+            <p
+            className="forgot-pass-login"
+            style={{
+              paddingTop: "20px",
+              cursor: "pointer",
+              fontSize: "1.1em",
+              fontWeight:"700"
+            }}
+            onClick={()=>navigate('/login')}
+          >
+            User?
+          </p>}
+            <p
+              className="forgot-pass-login"
+              style={{
+                paddingTop: "20px",
+                cursor: "pointer",
+                fontSize: "1.1em",
+                fontWeight:"700"
+              }}
+            >
+              Forgot password ?
+            </p>
+          </div>
+
+          <div className="mt-5 mb-5 ">
+            {credential !== "admin" ? (
+              <button className="submit-btn submit-btn-user" >
+                Submit
+              </button>
+            ) : (
+              <button className="submit-btn submit-btn-admin">
+                Submit
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

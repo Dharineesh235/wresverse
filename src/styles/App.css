@@ -5,31 +5,68 @@
   /* background-color: rgb(75, 74, 74); */
 }
 
-.login {
+.containerPrime {
   width: 100%;
+  padding: 150px 0px;
+  align-items: 'center';
+  padding: '20px';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100lvh;
+}
+.containerPrimeUser{
   color: rgb(8, 8, 8) ;
-  padding: 150px 0px;
-  align-items: 'center';
-  padding: '20px';
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
+  background-color: gray;
 }
-.login-admin {
-  width: 100%;
+.containerPrimeAdmin {
   color: rgb(252, 6, 6) ;
-  padding: 150px 0px;
-  align-items: 'center';
-  padding: '20px';
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
+  background-color: black;
 }
+.containerSec{
+  position: relative;
+  /* width: 200px; */
+  margin: 0 auto;
+  /* border: 10px solid black; */
+  box-sizing: border-box;
+}
+.icon{
+  font-size: 30px;
+}
+.container-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+  /* border: 1px solid yellow; */
+}
+/* .container-user-opts{
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: 0 auto;
+} */
+
 .submit-btn{
+  position: relative;
   -webkit-transition-duration: 0.4s; 
+  border: none;
+  font-size: 1.2em;
+  color: #ffff;
+  padding: 12px;
+  width: 300px;
+  border-radius: 26px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
   transition-duration: 0.4s;
+}
+.submit-btn-user{
+  background-color: black;
+}
+.submit-btn-admin{
+  background-color: red;
 }
 .submit-btn::after{
   content: "";
