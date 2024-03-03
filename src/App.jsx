@@ -5,7 +5,7 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/wresverse">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/adminlogin" element={<Login credential="admin" />} />
